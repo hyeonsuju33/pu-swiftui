@@ -1,0 +1,12 @@
+name: SwiftUI CI
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: macos-14
+    steps:
+      - uses: actions/checkout@v4
+      - run: xcodebuild -scheme Swiftui -destination 'platform=macOS' build | tail -15
